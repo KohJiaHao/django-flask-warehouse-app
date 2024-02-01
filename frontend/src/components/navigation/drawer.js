@@ -16,13 +16,20 @@ export default function MenuDrawer() {
 
   const navigate = useNavigate();
 
-  const navigateToProducts = () => {
-    navigate('/products');
+  const navigateToUrl = (url) => {
+    navigate(url);
   };
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
+
+  const navigationOptions = [
+    {label: 'Products', url: '/products'},
+    {label: 'Inventory', url: '/inventory'},
+    {label: 'Inbound', url: '/inbound'},
+    {label: 'Outbound', url: '/outbound'}
+  ]
 
   const list = (anchor) => (
     <Box
@@ -34,10 +41,10 @@ export default function MenuDrawer() {
     	<h1>Drawer</h1>
       <Divider />
       <List>
-        {['Products', 'Inventory', 'Inbound', 'Outbound'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={navigateToProducts}>
-              <ListItemText primary={text} />
+        {navigationOptions.map((item, index) => (
+          <ListItem key={item.label} disablePadding>
+            <ListItemButton onClick={() => navigateToUrl(item.url)}>
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}

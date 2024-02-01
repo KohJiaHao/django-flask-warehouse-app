@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import MenuAppBar from './navigation/appbar';
 
 
 const columns = [
@@ -38,6 +39,7 @@ function ProductsScreen() {
 
   return (
     <div>
+      <MenuAppBar></MenuAppBar>
       <Grid container spacing={3} alignItems="center" sx={{ padding: '15px' }}>
         <Grid item>
           <Typography variant="h4" component="div" align="left">

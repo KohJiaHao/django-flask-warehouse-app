@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { DataGrid } from '@mui/x-data-grid';
+import MenuAppBar from './navigation/appbar';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -41,6 +42,7 @@ const rows = [
 function InventoryScreen() {
     return (
       <div>
+        <MenuAppBar></MenuAppBar>
         <Grid container spacing={3} alignItems="center"
           sx={{padding: "15px"}}>
             <Grid item>
