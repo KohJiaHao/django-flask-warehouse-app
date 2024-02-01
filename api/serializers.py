@@ -5,7 +5,7 @@ from .models import Product, Inventory, Inbound, Outbound
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('sku', 'name')
+        fields = '__all__'
 
 class InventorySerializer(serializers.ModelSerializer):
     class Meta:

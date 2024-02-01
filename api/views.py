@@ -22,6 +22,7 @@ class ProductView(generics.ListCreateAPIView):
     serializer_class = ProductSerializer 
 
 class InventoryList(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
 
@@ -44,11 +45,24 @@ class InventoryList(APIView):
 class InboundView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, DjangoModelPermissions]
     
-    queryset = Inbound.objects.all()
+    # queryset = Inbound.objects.all()
     serializer_class = InboundSerializer 
+
+    def get_queryset(self):
+        queryset = Inbound.objects.all()
+        query_params = self.request.query_params
+
+        # Apply filters based on the query parameters
+        for param, value in query_params.items():
+            if param in ['status']:
+                filter_kwargs = {param: value}
+                print(filter_kwargs)
+                queryset = queryset.filter(**filter_kwargs)
+
+        return queryset
 
 class OutboundView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, DjangoModelPermissions]
     
     queryset = Outbound.objects.all()
-    serializer_class = OutboundSerializer 
+    serializer_class = OutboundSerializer
