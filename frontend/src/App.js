@@ -1,10 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import InventoryScreen from './components/inventory';
+import MenuAppBar from './components/navigation/appbar';
+import ProductsScreen from './components/products';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <ProductsScreen></ProductsScreen>
+      <InventoryScreen></InventoryScreen> */}
+      <Router>
+        <MenuAppBar></MenuAppBar>
+        <Routes>
+          <Route path="/products" element={<ProductsScreen />} >
+          </Route>
+          <Route path="/inventory" element={<InventoryScreen />} />
+          {/* <Route path="/inbound" element={<InboundTab />} /> */}
+        </Routes>
+      </Router>
+
+      {/* <MenuDrawer></MenuDrawer> */}
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +33,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
