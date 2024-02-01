@@ -2,17 +2,43 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.parsers import JSONParser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 from rest_framework import status
 from .models import Product, Inventory, Inbound, Outbound
 from .serializers import ProductSerializer, InventorySerializer, InboundSerializer, OutboundSerializer
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 def main(request):
-    return HttpResponse("Hello")
+    return HttpResponse("This is the root URL for Django API")
+
+@permission_classes([AllowAny])
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        username = data['username']
+        password = data['password']
+        user = authenticate(request, username=username, password=password)
+        print(request)
+        print(user)
+        if user is not None:
+            auth_login(request, user)
+            return JsonResponse({'message': 'Login successful'})
+        else:
+            return JsonResponse({'error': 'Invalid username or password'}, status=400)
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+def logout(request):
+    auth_logout(request)
+    return JsonResponse({'message': 'Logout successful'})
 
 
 class ProductView(generics.ListCreateAPIView):

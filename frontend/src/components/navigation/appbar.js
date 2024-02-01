@@ -7,9 +7,13 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuDrawer from './drawer';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  
+  const navigate = useNavigate();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -17,6 +21,17 @@ export default function MenuAppBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logout = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/logout');
+      console.log('Logout successful:', response.data);
+      navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -53,7 +68,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
         </Toolbar>
