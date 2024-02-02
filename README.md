@@ -24,15 +24,15 @@
 
 ## Web Framework and Architecture
 
-The project uses Django as the web framework, which handles the backend logic and serves the React frontend. React, located in `/frontend`, controls the client-side UI and routing. React's build files are served by Django, with non-matching URLs directed to React's `index.html`. ReactRouter manages routing within the application. DjangoRestFramework is employed to construct REST APIs, located in the `/api` folder.
+Django is used as the web framework but allows React to handle client side UI and routing. React is located in ‘/frontend’, and it’s build files are served by Django by making Django path any non-matching urls to React’s index.html, which React then controls routing with ReactRouter. DjangoRestFramework is used to build REST Apis in the ‘/api’ folder. 
 
 ## Database
 
-A PostgreSQL database hosted on Azure serves as the production database. Access to the database requires specific credentials, which can be obtained from the owner and added to the appropriate configuration files. Database model normalization is illustrated in `/design-docs`, providing insight into the conceptual model used.
+A PostgreSQL database hosted on Azure serves as the production database. Access to the database requires specific credentials, which can be obtained from the owner and added to the appropriate configuration files. Database model normalization is shown in ‘/design-docs’ which show the conceptual model used. 
 
 ## Hosting
 
-The project utilizes Azure App Service to serve the separate React files and Django API backend. However, due to the application's dual nature, configuring `config.yml` requires careful consideration. Dockerization is planned as a future enhancement, with the goal of containerizing the application for easier deployment.
+I have used Azure App service to serve my separate React files and Flask API backend before, but this being a 2-in-1 application, I will need to think about how to setup the config.yml. As for Docker I have not successfully dockerized an app before but that will certainly be the end goal.
 
 ## Installation and Usage
 
