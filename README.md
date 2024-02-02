@@ -26,7 +26,7 @@
 
 ## Web Framework and Architecture
 
-Django is used as the web framework but allows React to handle client side UI and routing. React is located in ‘/frontend’, and it’s build files are served by Django by making Django path any non-matching urls to React’s index.html, which React then controls routing with ReactRouter. DjangoRestFramework is used to build REST Apis in the ‘/api’ folder. 
+Django is used as the web framework but allows React to handle client side UI and routing. React is located in ‘/frontend’, and it’s build files are served by React by making Django path any non-matching urls to React’s index.html, which React then controls routing with ReactRouter. DjangoRestFramework is used to build REST Apis in the ‘/api’ folder. 
 
 ## Database
 
