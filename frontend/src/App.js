@@ -5,6 +5,7 @@ import Login from './components/login';
 import ProductsScreen from './components/products';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import CsrfErrorHandler from './CsrfErrorHandler';
+import InboundScreen from './components/inbound';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/products" element={<ProductsScreen />} >
           </Route>
           <Route path="/inventory" element={<InventoryScreen />} />
+          <Route path="/inbound" element={<InboundScreen />} />
+          <Route path="/outbound" element={<InboundScreen />} />
         </Routes>
       </Router>
     </div>
