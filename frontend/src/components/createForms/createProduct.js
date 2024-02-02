@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Grid, CircularProgress, Typography } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 import axios from 'axios';
 
 const CreateProductForm = ({ closeCreate }) => {
@@ -32,40 +33,44 @@ const CreateProductForm = ({ closeCreate }) => {
   };
 
   return (
-    <Grid container spacing={2} direction="column">
-      <Grid item>
-        <TextField
-          label="SKU"
-          variant="outlined"
-          value={sku}
-          onChange={handleSkuChange}
-        />
-      </Grid>
-      <Grid item>
-        <TextField
-          label="Product Name"
-          variant="outlined"
-          value={productName}
-          onChange={handleProductNameChange}
-        />
-      </Grid>
-      <Grid item>
-        <Button
-          variant="contained"
-          onClick={handleSubmit}
-          disabled={isLoading} // Disable button while API call is in progress
-        >
-          {isLoading ? <CircularProgress size={24} /> : 'Create Product'}
-        </Button>
-      </Grid>
-      {createdProduct && (
+    <div>
+      <Button sx={{float:'left'}} onClick={closeCreate} startIcon={<ArrowBack />}>Back</Button>
+      <Grid container spacing={2} direction="column">
         <Grid item>
-          <Typography variant="body1">
-            Created Product: {createdProduct.name} (SKU: {createdProduct.sku})
-          </Typography>
+          <TextField
+            label="SKU"
+            variant="outlined"
+            value={sku}
+            onChange={handleSkuChange}
+          />
         </Grid>
-      )}
-    </Grid>
+        <Grid item>
+          <TextField
+            label="Product Name"
+            variant="outlined"
+            value={productName}
+            onChange={handleProductNameChange}
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            disabled={isLoading} // Disable button while API call is in progress
+          >
+            {isLoading ? <CircularProgress size={24} /> : 'Create Product'}
+          </Button>
+        </Grid>
+        {createdProduct && (
+          <Grid item>
+            <Typography variant="body1">
+              Created Product: {createdProduct.name} (SKU: {createdProduct.sku})
+            </Typography>
+          </Grid>
+        )}
+      </Grid>
+    </div>
+    
   );
 };
 

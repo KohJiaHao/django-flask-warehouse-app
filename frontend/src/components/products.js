@@ -78,8 +78,6 @@ function ProductsScreen() {
       )}
       {toggleCreate && (
         <div>
-          create form here 
-          <button>create</button>
           <CreateProductForm closeCreate={closeCreate}></CreateProductForm>
         </div>
       )}
