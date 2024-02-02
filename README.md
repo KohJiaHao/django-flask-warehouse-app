@@ -7,7 +7,6 @@
 - [Database](#database)
 - [Hosting](#hosting)
 - [Installation and Usage](#installation-and-usage)
-- [In Progress Features / Issues](#in-progress-features--issues)
 
 ## App features
 ### Available features:
@@ -18,8 +17,11 @@
 - Get endpoints in Django are by default allowed to all authenticated users, so currently any logged in user can see Products, Inventory, Inbound, Outbound etc. But Post endpoints such as to create Product are restricted based on permissions (Operator group only has permissions for inbound/outbound, so they cannot create a Product) 
 
 ### In progress features / issues:
+- Outbound page
+- Feedback on failed user actions (user not permitted to make post request, invalid csrf token, HTTP400_BAD_REQUEST due to missing required fields)
 - Allowing users to act on ‘Pending’ Inbound and Outbound requests, for example a user can “complete” an Inbound, which will mark it as complete and update the Inventory information of the storage location receiving the Inbound order.
-- Having issues with sessionToken and csrf tokens, new to these concepts so not sure what is happening yet, but opening incognito tabs seem to ensure that the permissions after login are handled correctly.
+- Having issues with sessionToken and csrf tokens, new to these concepts so not sure what is happening yet, but opening incognito tabs seem to ensure that the permissions after login are handled correctly, same browser session can be used to logout/login to other users to test permissions.
+- Refactoring could be done in create screens to 1) handle form state changes better. 2) reuse of create screens
 
 
 ## Web Framework and Architecture
