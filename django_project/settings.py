@@ -146,3 +146,13 @@ REST_FRAMEWORK = {
     ],
     # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
+
+
+# Set session cookie age to 1 hour (3600 seconds)
+SESSION_COOKIE_AGE = 3600
+
+# Set session expiration to 1 hour (3600 seconds)
+SESSION_EXPIRATION_SECONDS = 3600
+
+# Configure session to expire at browser close
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
