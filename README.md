@@ -49,13 +49,16 @@ To install and run the project locally, follow these steps:
 5. Install node modules by running:
    ```bash
    npm install
-6. Add .env for postgresDB connection in `/django_project`, it should contain
+6. Build React project:
+   ```bash
+   npm run build
+7. Add .env for postgresDB connection in `/django_project`, it should contain
    ```bash
    # .env
    DB_PASSWORD=xxx
-7. Back to project root and run:
+8. Back to project root and run:
    ```bash
    python manage.py runserver
-8. App hosted on localhost:8000
+9. App hosted on localhost:8000
    
   
